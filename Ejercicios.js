@@ -84,9 +84,9 @@ const union1 = [5, 10, 15];
 const union2 = [20, 25, 30];
 
 function union(union1, union2) {
-    let union3 = [...union1, ...union2];
-    return union3;
+    return [...union1, ...union2];
 }
+
 console.log("7-Union: ", union(union1, union2));
 
 // Interseccion
@@ -112,24 +112,35 @@ console.log("8-Interseccion: ", interseccion(conj1, conj2));
 const conj3 = [0,1,2,3,4];
 
 function replace(conj3){
+    const copy = [... conj3];
+    for (i = 0; i < copy.length; i++){
+         if (copy[i] == 0){
+         copy[i] = -1;
+         }
+     }
+ 
+     return copy;
+ }
+/*
+function replace(conj3){
     for (i = 0; i < conj3.length; i++){
         if (conj3[i] == 0){
         conj3[i] = -1;
         return conj3;
         }
     }
-}
+}*/
 console.log("9-Reemplazo: ", replace(conj3))
 
 // Repetido
 
-const rep = [1,2,3,3,4];
+const rep = [1,1,2,3,3,4];
 
 function duplicate(rep){
     numrep = [];
     for(i = 0; i < rep.length ; i++){
         for(j = 1; j < rep.length; j++){
-            if(rep[i] == rep[j]){
+            if(rep[i] == rep[j] && i !== j){
             numrep = rep[i];
             return numrep;
             }
@@ -139,4 +150,15 @@ function duplicate(rep){
         }
     }
 }
+/*
+function duplicate(rep){
+    for(i = 0; i < rep.length ; i++){
+        for(j = 1; j < rep.length; j++){
+            if(rep[i] == rep[j] && i !== j){
+                return rep[i];
+            }
+        }
+    }
+    return -1;
+}*/
 console.log("10-Duplicado: ", duplicate(rep));
